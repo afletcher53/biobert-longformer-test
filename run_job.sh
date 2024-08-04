@@ -11,8 +11,8 @@ SBATCH --mail-user=ahafletcher1@sheffield.ac.uk
 #SBATCH --output=log/%j.%x.out
 #SBATCH --error=log/%j.%x.err
 
-module load Anaconda3/2022.10
-module load cuDNN/8.7.0.84-CUDA-11.8.0
+module load Anaconda3/2019.07
+module load cuDNN/8.0.4.30-CUDA-11.1.1    
 
 # init env
 source .venv/bin/activate
