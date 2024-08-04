@@ -15,7 +15,7 @@ module load Anaconda3/2019.07
 module load cuDNN/8.0.4.30-CUDA-11.1.1    
 
 # init env
-source .venv/bin/activate
-PATH=$(pwd)/bin:$PATH
+source activate longformer
+
 # begin process
-python train-bio-longformer.py
+srun python train-bio-longformer.py
