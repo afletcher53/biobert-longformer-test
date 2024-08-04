@@ -35,7 +35,7 @@ def prepare_pubmed_data(num_files=10):
     with open(train_file, 'w') as train, open(val_file, 'w') as val:
         for i in range(1, num_files + 1):
             filename = download_pubmed(i, 1)
-            output = f'pubmed_extracted_{i}.txt'
+            output = 'pubmed_extracted_{}.txt'.format(i)
             extract_abstracts(filename, output)
             
             # Split data: 90% train, 10% val
@@ -112,10 +112,11 @@ def create_long_model(save_model_to, attention_window, max_pos):
 
         layer.attention.self = longformer_self_attn
 
-    logger.info(f'saving model to {save_model_to}')
+    logger.info('saving model to {}'.format(save_model_to))
     model.save_pretrained(save_model_to)
     tokenizer.save_pretrained(save_model_to)
     return model, tokenizer
+
 def copy_proj_layers(model):
     for i, layer in enumerate(model.bert.encoder.layer):
         layer.attention.self.query_global = copy.deepcopy(layer.attention.self.query)
@@ -130,7 +131,7 @@ def pretrain_and_evaluate(args, model, tokenizer, eval_only, model_path):
     if eval_only:
         train_dataset = val_dataset
     else:
-        logger.info(f'Loading and tokenizing training data is usually slow: {args.train_datapath}')
+        logger.info('Loading and tokenizing training data is usually slow: {}'.format(args.train_datapath))
         train_dataset = TextDataset(tokenizer=tokenizer,
                                     file_path=args.train_datapath,
                                     block_size=tokenizer.max_len)
@@ -141,7 +142,7 @@ def pretrain_and_evaluate(args, model, tokenizer, eval_only, model_path):
 
     eval_loss = trainer.evaluate()
     eval_loss = eval_loss['eval_loss']
-    logger.info(f'Initial eval bpc: {eval_loss/math.log(2)}')
+    logger.info('Initial eval bpc: {}'.format(eval_loss/math.log(2)))
 
     if not eval_only:
         trainer.train(model_path=model_path)
@@ -149,7 +150,7 @@ def pretrain_and_evaluate(args, model, tokenizer, eval_only, model_path):
 
         eval_loss = trainer.evaluate()
         eval_loss = eval_loss['eval_loss']
-        logger.info(f'Eval bpc after pretraining: {eval_loss/math.log(2)}')
+        logger.info('Eval bpc after pretraining: {}'.format(eval_loss/math.log(2)))
 
 @dataclass
 class ModelArgs:
@@ -160,6 +161,7 @@ class ModelArgs:
         self.max_pos = (self.max_pos // self.attention_window) * self.attention_window
         if self.max_pos < self.attention_window:
             self.max_pos = self.attention_window
+
 parser = HfArgumentParser((TrainingArguments, ModelArgs,))
 
 training_args, model_args = parser.parse_args_into_dataclasses(look_for_args_file=False, args=[
@@ -199,27 +201,27 @@ if __name__ == "__main__":
     training_args.val_datapath = val_file
 
     model_args = ModelArgs(attention_window=512, max_pos=4096)  # This will automatically adjust to 4096
-    model_path = f'{training_args.output_dir}/biobert-long-{model_args.max_pos}'
+    model_path = '{}/biobert-long-{}'.format(training_args.output_dir, model_args.max_pos)
     if not os.path.exists(model_path):
         os.makedirs(model_path)
 
-    logger.info(f'Converting BioBERT into BioBERT-long-{model_args.max_pos}')
+    logger.info('Converting BioBERT into BioBERT-long-{}'.format(model_args.max_pos))
     model, tokenizer = create_long_model(
         save_model_to=model_path, attention_window=model_args.attention_window, max_pos=model_args.max_pos)
 
-    logger.info(f'Loading the model from {model_path}')
+    logger.info('Loading the model from {}'.format(model_path))
     tokenizer = BertTokenizerFast.from_pretrained(model_path)
     model = BertLongForMaskedLM.from_pretrained(model_path)
 
-    logger.info(f'Pretraining BioBERT-long-{model_args.max_pos} ... ')
+    logger.info('Pretraining BioBERT-long-{} ... '.format(model_args.max_pos))
     pretrain_and_evaluate(training_args, model, tokenizer, eval_only=False, model_path=training_args.output_dir)
 
-    logger.info(f'Copying local projection layers into global projection layers ... ')
+    logger.info('Copying local projection layers into global projection layers ... ')
     model = copy_proj_layers(model)
-    logger.info(f'Saving model to {model_path}')
+    logger.info('Saving model to {}'.format(model_path))
     model.save_pretrained(model_path)
 
-    logger.info(f'Loading the final model from {model_path}')
+    logger.info('Loading the final model from {}'.format(model_path))
     tokenizer = BertTokenizerFast.from_pretrained(model_path)
     model = BertLongForMaskedLM.from_pretrained(model_path)
 
