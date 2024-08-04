@@ -1,5 +1,5 @@
 #!/bin/bash
-SBATCH --comment=af-biobert-longformer
+#SBATCH --comment=af-biobert-longformer
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
 #SBATCH --mem=32G
@@ -7,7 +7,7 @@ SBATCH --comment=af-biobert-longformer
 #SBATCH --gpus-per-node=1
 #SBATCH --time=04-00:00:00
 #SBATCH --mail-type=ALL
-SBATCH --mail-user=ahafletcher1@sheffield.ac.uk
+#SBATCH --mail-user=ahafletcher1@sheffield.ac.uk
 #SBATCH --output=log/%j.%x.out
 #SBATCH --error=log/%j.%x.err
 
