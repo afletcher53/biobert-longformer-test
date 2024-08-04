@@ -11,11 +11,22 @@
 #SBATCH --output=log/%j.%x.out
 #SBATCH --error=log/%j.%x.err
 
+# Load necessary modules
 module load Anaconda3/2019.07
 module load cuDNN/8.0.4.30-CUDA-11.1.1    
 
-# init env
-source activate longformer
+# Initialize conda
+source /usr/local/anaconda3/etc/profile.d/conda.sh
 
-# begin process
-srun python train-bio-longformer.py
+# Activate your environment
+conda activate longformer
+
+# Print Python path and version for debugging
+which python
+python --version
+
+# Print conda environment info
+conda info
+
+# Begin process
+python train-bio-longformer.py
