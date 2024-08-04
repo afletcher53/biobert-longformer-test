@@ -15,8 +15,11 @@
 module load Anaconda3/2019.07
 module load cuDNN/8.0.4.30-CUDA-11.1.1    
 
+# Print the conda prefix for debugging
+echo "CONDA_PREFIX: $CONDA_PREFIX"
+
 # Initialize conda
-source /usr/local/anaconda3/etc/profile.d/conda.sh
+eval "$($CONDA_PREFIX/bin/conda shell.bash hook)"
 
 # Activate your environment
 conda activate longformer
@@ -27,6 +30,12 @@ python --version
 
 # Print conda environment info
 conda info
+
+# Print current working directory
+pwd
+
+# List contents of current directory
+ls -l
 
 # Begin process
 python train-bio-longformer.py
