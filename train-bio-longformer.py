@@ -152,19 +152,20 @@ def pretrain_and_evaluate(args, model, tokenizer, eval_only, model_path):
         eval_loss = eval_loss['eval_loss']
         logger.info('Eval bpc after pretraining: {}'.format(eval_loss/math.log(2)))
 
-@dataclass
 class ModelArgs:
-    attention_window: int = field(default=512, metadata={"help": "Size of attention window"})
-    max_pos: int = field(default=4096, metadata={"help": "Maximum position"})
+    def __init__(self, attention_window=512, max_pos=4096):
+        self.attention_window = attention_window
+        self.max_pos = max_pos
+        self.__post_init__()
 
     def __post_init__(self):
         self.max_pos = (self.max_pos // self.attention_window) * self.attention_window
         if self.max_pos < self.attention_window:
             self.max_pos = self.attention_window
 
-parser = HfArgumentParser((TrainingArguments, ModelArgs,))
-
-training_args, model_args = parser.parse_args_into_dataclasses(look_for_args_file=False, args=[
+# Replace the existing parser section with this:
+parser = HfArgumentParser((TrainingArguments,))
+training_args = parser.parse_args_into_dataclasses(look_for_args_file=False, args=[
     '--output_dir', 'tmp',
     '--warmup_steps', '500',
     '--learning_rate', '0.00003',
@@ -180,10 +181,10 @@ training_args, model_args = parser.parse_args_into_dataclasses(look_for_args_fil
     '--evaluate_during_training',
     '--do_train',
     '--do_eval',
-])
+])[0]  # We only need the first item from the returned tuple
+
 training_args.val_datapath = 'path/to/your/biomedical/validation/data'
 training_args.train_datapath = 'path/to/your/biomedical/training/data'
-
 # Choose GPU
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
