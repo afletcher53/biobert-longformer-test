@@ -14,8 +14,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 def download_pubmed(year, month):
-    base_url = f"https://ftp.ncbi.nlm.nih.gov/pubmed/baseline/pubmed24n{year:04d}.xml.gz"
-    filename = f"pubmed22n{year:04d}.xml.gz"
+    base_url = "https://ftp.ncbi.nlm.nih.gov/pubmed/baseline/pubmed24n{:04d}.xml.gz".format(year)
+    filename = "pubmed22n{:04d}.xml.gz".format(year)
     urllib.request.urlretrieve(base_url, filename)
     return filename
 
