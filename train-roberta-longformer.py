@@ -8,6 +8,9 @@ from transformers import RobertaForMaskedLM, RobertaTokenizerFast, TextDataset, 
 from transformers import TrainingArguments, HfArgumentParser
 from transformers.models.longformer.modeling_longformer import LongformerSelfAttention
 import wandb
+
+os.environ["WANDB_API_KEY"] = "ceff7aa0c8155b19c88199c687e74f8e22b4024c"
+
 from transformers.integrations import WandbCallback
 from transformers import TrainingArguments, HfArgumentParser, Trainer
 
