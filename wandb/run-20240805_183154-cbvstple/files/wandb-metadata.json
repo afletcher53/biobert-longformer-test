@@ -1,0 +1,100 @@
+{
+    "os": "Linux-6.8.0-39-generic-x86_64-with-glibc2.17",
+    "python": "3.8.19",
+    "heartbeatAt": "2024-08-05T17:31:54.801434",
+    "startedAt": "2024-08-05T17:31:54.146585",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/train-biobert-longformer.py",
+    "codePathLocal": "train-biobert-longformer.py",
+    "codePath": "train-biobert-longformer.py",
+    "git": {
+        "remote": "https://github.com/afletcher53/biobert-longformer-test.git",
+        "commit": "2c84aa615744b80d2d40bcdf32bb064f8171c193"
+    },
+    "email": "afletcher53@gmail.com",
+    "root": "/home/aaronfletcher/Desktop/Repositories/biobert-longformer-test",
+    "host": "dcs34532",
+    "username": "aaronfletcher",
+    "executable": "/home/aaronfletcher/miniconda3/envs/longformer/bin/python",
+    "cpu_count": 10,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 3502.88225,
+        "min": 400.0,
+        "max": 3666.6666666666665
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3573.357,
+            "min": 400.0,
+            "max": 4400.0
+        },
+        {
+            "current": 1375.818,
+            "min": 400.0,
+            "max": 4400.0
+        },
+        {
+            "current": 4000.0,
+            "min": 400.0,
+            "max": 4400.0
+        },
+        {
+            "current": 3999.943,
+            "min": 400.0,
+            "max": 4400.0
+        },
+        {
+            "current": 1191.7,
+            "min": 400.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1216.808,
+            "min": 400.0,
+            "max": 3300.0
+        },
+        {
+            "current": 399.692,
+            "min": 400.0,
+            "max": 3300.0
+        },
+        {
+            "current": 401.054,
+            "min": 400.0,
+            "max": 3300.0
+        },
+        {
+            "current": 3329.477,
+            "min": 400.0,
+            "max": 3300.0
+        },
+        {
+            "current": 3274.411,
+            "min": 400.0,
+            "max": 3300.0
+        },
+        {
+            "current": 3300.132,
+            "min": 400.0,
+            "max": 3300.0
+        },
+        {
+            "current": 3305.615,
+            "min": 400.0,
+            "max": 3300.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 913.7511215209961,
+            "used": 450.268856048584
+        }
+    },
+    "memory": {
+        "total": 15.31002426147461
+    }
+}

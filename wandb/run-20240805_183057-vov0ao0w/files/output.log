@@ -1,0 +1,7 @@
+Some weights of BertForMaskedLM were not initialized from the model checkpoint at dmis-lab/biobert-v1.1 and are newly initialized: ['cls.predictions.bias', 'cls.predictions.decoder.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:__main__:Creating long model with attention window: 512 and max pos: 4096
+Some weights of BertForMaskedLM were not initialized from the model checkpoint at dmis-lab/biobert-v1.1 and are newly initialized: ['cls.predictions.bias', 'cls.predictions.decoder.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:__main__:saving model to biobert-long-window512-pos4096
+INFO:__main__:Training long model...

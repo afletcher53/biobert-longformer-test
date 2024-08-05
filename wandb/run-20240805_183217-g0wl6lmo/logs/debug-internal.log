@@ -1,0 +1,61 @@
+2024-08-05 18:32:17,607 INFO    StreamThr :222275 [internal.py:wandb_internal():86] W&B internal server running at pid: 222275, started at: 2024-08-05 18:32:17.606724
+2024-08-05 18:32:17,615 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: status
+2024-08-05 18:32:17,617 INFO    WriterThread:222275 [datastore.py:open_for_write():87] open: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/run-g0wl6lmo.wandb
+2024-08-05 18:32:17,621 DEBUG   SenderThread:222275 [sender.py:send():379] send: header
+2024-08-05 18:32:17,636 DEBUG   SenderThread:222275 [sender.py:send():379] send: run
+2024-08-05 18:32:18,075 INFO    SenderThread:222275 [dir_watcher.py:__init__():211] watching files in: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files
+2024-08-05 18:32:18,076 INFO    SenderThread:222275 [sender.py:_start_run_threads():1124] run started: g0wl6lmo with start time 1722879137.605737
+2024-08-05 18:32:18,092 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: check_version
+2024-08-05 18:32:18,093 DEBUG   SenderThread:222275 [sender.py:send_request():406] send_request: check_version
+2024-08-05 18:32:18,168 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: run_start
+2024-08-05 18:32:18,169 DEBUG   HandlerThread:222275 [system_info.py:__init__():26] System info init
+2024-08-05 18:32:18,169 DEBUG   HandlerThread:222275 [system_info.py:__init__():41] System info init done
+2024-08-05 18:32:18,169 INFO    HandlerThread:222275 [system_monitor.py:start():194] Starting system monitor
+2024-08-05 18:32:18,170 INFO    HandlerThread:222275 [system_monitor.py:probe():214] Collecting system info
+2024-08-05 18:32:18,170 INFO    SystemMonitor:222275 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-08-05 18:32:18,172 INFO    SystemMonitor:222275 [interfaces.py:start():190] Started cpu monitoring
+2024-08-05 18:32:18,174 INFO    SystemMonitor:222275 [interfaces.py:start():190] Started disk monitoring
+2024-08-05 18:32:18,176 INFO    SystemMonitor:222275 [interfaces.py:start():190] Started memory monitoring
+2024-08-05 18:32:18,179 INFO    SystemMonitor:222275 [interfaces.py:start():190] Started network monitoring
+2024-08-05 18:32:18,189 DEBUG   HandlerThread:222275 [system_info.py:probe():150] Probing system
+2024-08-05 18:32:18,200 DEBUG   HandlerThread:222275 [system_info.py:_probe_git():135] Probing git
+2024-08-05 18:32:18,223 DEBUG   HandlerThread:222275 [system_info.py:_probe_git():143] Probing git done
+2024-08-05 18:32:18,223 DEBUG   HandlerThread:222275 [system_info.py:probe():198] Probing system done
+2024-08-05 18:32:18,223 DEBUG   HandlerThread:222275 [system_monitor.py:probe():223] {'os': 'Linux-6.8.0-39-generic-x86_64-with-glibc2.17', 'python': '3.8.19', 'heartbeatAt': '2024-08-05T17:32:18.189876', 'startedAt': '2024-08-05T17:32:17.598455', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/train-biobert-longformer.py', 'codePathLocal': 'train-biobert-longformer.py', 'codePath': 'train-biobert-longformer.py', 'git': {'remote': 'https://github.com/afletcher53/biobert-longformer-test.git', 'commit': '2c84aa615744b80d2d40bcdf32bb064f8171c193'}, 'email': 'afletcher53@gmail.com', 'root': '/home/aaronfletcher/Desktop/Repositories/biobert-longformer-test', 'host': 'dcs34532', 'username': 'aaronfletcher', 'executable': '/home/aaronfletcher/miniconda3/envs/longformer/bin/python', 'cpu_count': 10, 'cpu_count_logical': 12, 'cpu_freq': {'current': 3026.5555833333333, 'min': 400.0, 'max': 3666.6666666666665}, 'cpu_freq_per_core': [{'current': 3867.064, 'min': 400.0, 'max': 4400.0}, {'current': 4000.0, 'min': 400.0, 'max': 4400.0}, {'current': 715.266, 'min': 400.0, 'max': 4400.0}, {'current': 400.0, 'min': 400.0, 'max': 4400.0}, {'current': 3246.115, 'min': 400.0, 'max': 3300.0}, {'current': 1007.309, 'min': 400.0, 'max': 3300.0}, {'current': 863.043, 'min': 400.0, 'max': 3300.0}, {'current': 3101.802, 'min': 400.0, 'max': 3300.0}, {'current': 1174.129, 'min': 400.0, 'max': 3300.0}, {'current': 398.404, 'min': 400.0, 'max': 3300.0}, {'current': 400.454, 'min': 400.0, 'max': 3300.0}, {'current': 398.919, 'min': 400.0, 'max': 3300.0}], 'disk': {'/': {'total': 913.7511215209961, 'used': 450.26892471313477}}, 'memory': {'total': 15.31002426147461}}
+2024-08-05 18:32:18,223 INFO    HandlerThread:222275 [system_monitor.py:probe():224] Finished collecting system info
+2024-08-05 18:32:18,223 INFO    HandlerThread:222275 [system_monitor.py:probe():227] Publishing system info
+2024-08-05 18:32:18,223 DEBUG   HandlerThread:222275 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-08-05 18:32:19,082 INFO    Thread-17 :222275 [dir_watcher.py:_on_file_created():271] file/dir created: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files/conda-environment.yaml
+2024-08-05 18:32:21,053 DEBUG   HandlerThread:222275 [system_info.py:_save_conda():222] Saving conda packages done
+2024-08-05 18:32:21,054 INFO    HandlerThread:222275 [system_monitor.py:probe():229] Finished publishing system info
+2024-08-05 18:32:21,058 DEBUG   SenderThread:222275 [sender.py:send():379] send: files
+2024-08-05 18:32:21,058 INFO    SenderThread:222275 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2024-08-05 18:32:21,077 INFO    Thread-17 :222275 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files/conda-environment.yaml
+2024-08-05 18:32:21,078 INFO    Thread-17 :222275 [dir_watcher.py:_on_file_created():271] file/dir created: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files/wandb-metadata.json
+2024-08-05 18:32:21,182 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: python_packages
+2024-08-05 18:32:21,182 DEBUG   SenderThread:222275 [sender.py:send_request():406] send_request: python_packages
+2024-08-05 18:32:21,183 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: stop_status
+2024-08-05 18:32:21,183 DEBUG   SenderThread:222275 [sender.py:send_request():406] send_request: stop_status
+2024-08-05 18:32:21,191 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: internal_messages
+2024-08-05 18:32:21,442 DEBUG   SenderThread:222275 [sender.py:send():379] send: telemetry
+2024-08-05 18:32:21,687 INFO    wandb-upload_0:222275 [upload_job.py:push():131] Uploaded file /tmp/tmpcsqvwfbewandb/sk3czi19-wandb-metadata.json
+2024-08-05 18:32:22,078 INFO    Thread-17 :222275 [dir_watcher.py:_on_file_created():271] file/dir created: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files/requirements.txt
+2024-08-05 18:32:22,849 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: status_report
+2024-08-05 18:32:23,078 INFO    Thread-17 :222275 [dir_watcher.py:_on_file_created():271] file/dir created: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files/output.log
+2024-08-05 18:32:25,079 INFO    Thread-17 :222275 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files/output.log
+2024-08-05 18:32:27,084 INFO    Thread-17 :222275 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files/output.log
+2024-08-05 18:32:27,131 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-05 18:32:27,132 DEBUG   SenderThread:222275 [sender.py:send():379] send: history
+2024-08-05 18:32:27,132 DEBUG   SenderThread:222275 [sender.py:send_request():406] send_request: summary_record
+2024-08-05 18:32:27,133 INFO    SenderThread:222275 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-05 18:32:28,085 INFO    Thread-17 :222275 [dir_watcher.py:_on_file_created():271] file/dir created: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files/wandb-summary.json
+2024-08-05 18:32:28,276 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: status_report
+2024-08-05 18:32:29,086 INFO    Thread-17 :222275 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files/output.log
+2024-08-05 18:32:33,277 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: status_report
+2024-08-05 18:32:36,183 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: stop_status
+2024-08-05 18:32:36,184 DEBUG   SenderThread:222275 [sender.py:send_request():406] send_request: stop_status
+2024-08-05 18:32:36,192 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: internal_messages
+2024-08-05 18:32:38,433 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: status_report
+2024-08-05 18:32:43,434 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: status_report
+2024-08-05 18:32:48,440 DEBUG   HandlerThread:222275 [handler.py:handle_request():146] handle_request: status_report
+2024-08-05 18:32:49,094 INFO    Thread-17 :222275 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/aaronfletcher/Desktop/Repositories/biobert-longformer-test/wandb/run-20240805_183217-g0wl6lmo/files/config.yaml

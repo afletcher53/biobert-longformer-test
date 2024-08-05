@@ -1,0 +1,89 @@
+INFO:__main__:Evaluating roberta-base (seqlen: 512) for reference ...
+/home/aaronfletcher/miniconda3/envs/longformer/lib/python3.8/site-packages/transformers/data/datasets/language_modeling.py:53: FutureWarning: This dataset will be removed from the library soon, preprocessing should be handled with the 🤗 Datasets library. You can have a look at this example script for pointers: https://github.com/huggingface/transformers/blob/main/examples/pytorch/language-modeling/run_mlm.py
+  warnings.warn(
+max_steps is given, it will override any value given in num_train_epochs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 79/79 [09:58<00:00,  8.12s/it][34m[1mwandb[39m[22m: [33mWARNING[39m The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 79/79 [09:59<00:00,  7.58s/it]
+INFO:__main__:Initial eval bpc: 2.5301963767427784
+INFO:__main__:Creating long model with attention window: 512 and max pos: 4096
+INFO:__main__:saving model to roberta-long-window512-pos4096
+INFO:__main__:Training long model...
+Token indices sequence length is longer than the specified maximum sequence length for this model (321529 > 4096). Running this sequence through the model will result in indexing errors
+INFO:__main__:Loading and tokenizing training data is usually slow: ./pubmed_train.txt
