@@ -16,17 +16,17 @@ module load Anaconda3/2019.07
 module load cuDNN/8.0.4.30-CUDA-11.1.1    
 
 # Initialize conda
-eval "$(/usr/local/packages/live/eb/Anaconda3/2019.07/bin/conda shell.bash hook)"
+# eval "$(/usr/local/packages/live/eb/Anaconda3/2019.07/bin/conda shell.bash hook)"
 
 # Activate your environment
-conda activate longformer
+# conda activate longformer
 
 # Print Python path and version for debugging
 which python
 python --version
 
 # Print conda environment info
-conda info
+# conda info
 
 # Print current working directory
 pwd
@@ -35,7 +35,7 @@ pwd
 ls -l
 
 # Check if PyTorch is installed
-conda list | grep torch
+# conda list | grep torch
 
 # Begin process
 python train-bio-longformer.py
