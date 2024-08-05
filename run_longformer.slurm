@@ -37,5 +37,14 @@ ls -l
 # Check if PyTorch is installed
 # conda list | grep torch
 
+# init env
+source .venv/bin/activate
+PATH=$(pwd)/bin:$PATH
+
+# Print Python path and version for debugging
+which python
+python --version
+
+
 # Begin process
 python train-bio-longformer.py
