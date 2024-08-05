@@ -74,12 +74,12 @@ class BertLongForMaskedLM(BertForMaskedLM):
 
 def create_long_model(save_model_to, attention_window, max_pos):
     model = BertForMaskedLM.from_pretrained('dmis-lab/biobert-v1.1')
-    tokenizer = BertTokenizerFast.from_pretrained('dmis-lab/biobert-v1.1', model_max_length=max_pos)
+    tokenizer = BertTokenizerFast.from_pretrained('dmis-lab/biobert-v1.1', max_len=max_pos)
     config = model.config
 
     # extend position embeddings
-    tokenizer.model_max_length = max_pos
-    tokenizer.init_kwargs['model_max_length'] = max_pos
+    tokenizer.max_length = max_pos
+    tokenizer.init_kwargs['max_length'] = max_pos
     current_max_pos, embed_size = model.bert.embeddings.position_embeddings.weight.shape
     max_pos += 2  # NOTE: BERT has positions 0,1 reserved, so embedding size is max position + 2
     config.max_position_embeddings = max_pos
@@ -96,9 +96,7 @@ def create_long_model(save_model_to, attention_window, max_pos):
         k = end_pos
     
     model.bert.embeddings.position_embeddings.weight.data = new_pos_embed
-    # model.bert.embeddings.position_ids.data = torch.tensor([i for i in range(max_pos)]).reshape(1, max_pos)
 
-    # replace the `modeling_bert.BertSelfAttention` object with `LongformerSelfAttention`
     config.attention_window = [attention_window] * config.num_hidden_layers
     for i, layer in enumerate(model.bert.encoder.layer):
         longformer_self_attn = LongformerSelfAttention(config, layer_id=i)
@@ -183,8 +181,8 @@ training_args = parser.parse_args_into_dataclasses(look_for_args_file=False, arg
     '--do_eval',
 ])[0]  # We only need the first item from the returned tuple
 
-training_args.val_datapath = 'path/to/your/biomedical/validation/data'
-training_args.train_datapath = 'path/to/your/biomedical/training/data'
+# training_args.val_datapath = './pubmed_val.txt'
+# training_args.train_datapath = './pubmed_train.txt'
 # Choose GPU
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
@@ -192,11 +190,11 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 # Main execution
 if __name__ == "__main__":
     logger.info("Preparing PubMed data...")
-    train_file, val_file = prepare_pubmed_data(num_files=1219)  # You can adjust the number of files
+    train_file, val_file = prepare_pubmed_data(num_files=1)  # You can adjust the number of files
     
     # make copies of train/val files for future use
-    shutil.copy(train_file, 'pubmed_train_copy.txt')
-    shutil.copy(val_file, 'pubmed_val_copy.txt')
+    # shutil.copy(train_file, 'pubmed_train_copy.txt')
+    # shutil.copy(val_file, 'pubmed_val_copy.txt')
     
     training_args.train_datapath = train_file
     training_args.val_datapath = val_file
@@ -229,5 +227,5 @@ if __name__ == "__main__":
     logger.info("BioBERT-long model is ready for use!")
 
     # Clean up
-    os.remove(train_file)
-    os.remove(val_file)
+    # os.remove(train_file)
+    # os.remove(val_file)
