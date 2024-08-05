@@ -2,7 +2,7 @@
 #SBATCH --comment=af-biobert-longformer
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
-#SBATCH --mem=32G
+#SBATCH --mem=64G
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=1
 #SBATCH --time=04-00:00:00
