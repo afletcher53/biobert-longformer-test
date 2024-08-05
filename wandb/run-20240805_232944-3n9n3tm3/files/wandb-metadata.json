@@ -1,0 +1,128 @@
+{
+    "os": "Linux-6.8.0-39-generic-x86_64-with-glibc2.10",
+    "python": "3.8.19",
+    "heartbeatAt": "2024-08-05T22:29:45.408700",
+    "startedAt": "2024-08-05T22:29:44.631610",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/aaron/Desktop/biobert-longformer/train-roberta-longformer.py",
+    "codePathLocal": "train-roberta-longformer.py",
+    "codePath": "train-roberta-longformer.py",
+    "git": {
+        "remote": "https://github.com/afletcher53/biobert-longformer-test.git",
+        "commit": "a53976783bf75ed2f3af9417fc633b391d14040c"
+    },
+    "email": "afletcher53@gmail.com",
+    "root": "/home/aaron/Desktop/biobert-longformer",
+    "host": "aaron-MS-7B89",
+    "username": "aaron",
+    "executable": "/home/aaron/anaconda3/envs/longformer/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 4198.8863125,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4198.947,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4206.418,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4199.9,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4198.672,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4199.969,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4200.15,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4198.761,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4200.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4199.805,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4199.895,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4196.187,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4199.932,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4202.179,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4194.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4197.855,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 4185.124,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1832.6974487304688,
+            "used": 89.05631637573242
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 2070 SUPER",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2070 SUPER",
+            "memory_total": 8589934592
+        }
+    ],
+    "memory": {
+        "total": 31.28607940673828
+    }
+}

@@ -156,13 +156,14 @@ def main():
         '--adam_epsilon', '1e-6',
         '--max_steps', '3000',
         '--logging_steps', '500',
-        '--save_steps', '500',
+        '--save_steps', '250',  # Save more frequently
         '--max_grad_norm', '5.0',
-        '--per_device_eval_batch_size', '8',
-        '--per_device_train_batch_size', '2',  # 32GB gpu with fp32
-        '--gradient_accumulation_steps', '32',
+        '--per_device_eval_batch_size', '4',  # Reduced from 8
+        '--per_device_train_batch_size', '1',  # Reduced from 2
+        '--gradient_accumulation_steps', '64',  # Increased from 32
         '--do_train',
         '--do_eval',
+        '--fp16',  # Enable mixed precision training
     ])
     training_args.val_datapath = './pubmed_val.txt'
     training_args.train_datapath = './pubmed_train.txt'
