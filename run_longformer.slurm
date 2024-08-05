@@ -15,36 +15,34 @@
 module load Anaconda3/2019.07
 module load cuDNN/8.0.4.30-CUDA-11.1.1    
 
-# Initialize conda
-# eval "$(/usr/local/packages/live/eb/Anaconda3/2019.07/bin/conda shell.bash hook)"
-
-# Activate your environment
-# conda activate longformer
-
-# Print Python path and version for debugging
-which python
-python --version
-
-# Print conda environment info
-# conda info
-
 # Print current working directory
-pwd
+echo "Current working directory: $(pwd)"
 
 # List contents of current directory
+echo "Directory contents:"
 ls -l
 
-# Check if PyTorch is installed
-# conda list | grep torch
-
-# init env
+# Activate virtual environment
+echo "Activating virtual environment..."
 source .venv/bin/activate
-PATH=$(pwd)/bin:$PATH
 
-# Print Python path and version for debugging
-which python
-python --version
+# Verify activation
+echo "Python path: $(which python)"
+echo "Python version: $(python --version)"
 
+# Add local bin to PATH if necessary
+if [ -d "$(pwd)/bin" ]; then
+    echo "Adding local bin to PATH..."
+    PATH=$(pwd)/bin:$PATH
+fi
+
+# Print updated PATH
+echo "Updated PATH: $PATH"
+
+# Output installed pip packages
+echo "Installed pip packages:"
+pip list
 
 # Begin process
+echo "Starting main process..."
 python train-roberta-longformer.py
