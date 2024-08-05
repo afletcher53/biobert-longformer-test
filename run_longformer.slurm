@@ -40,5 +40,7 @@ conda list | grep torch
 # print all the conda installs
 conda list
 
+nvidia-smi
+
 # Begin process
 python train-roberta-longformer.py
