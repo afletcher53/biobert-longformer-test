@@ -163,7 +163,6 @@ def main():
         '--gradient_accumulation_steps', '64',  # Increased from 32
         '--do_train',
         '--do_eval',
-        '--fp16',  # Enable mixed precision training
     ])
     training_args.val_datapath = './pubmed_val.txt'
     training_args.train_datapath = './pubmed_train.txt'
