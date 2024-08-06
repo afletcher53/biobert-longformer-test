@@ -8,6 +8,33 @@ from transformers import RobertaForMaskedLM, RobertaTokenizerFast, TextDataset, 
 from transformers import TrainingArguments, HfArgumentParser
 from transformers.models.longformer.modeling_longformer import LongformerSelfAttention
 import wandb
+from logging.handlers import RotatingFileHandler
+
+import torch
+
+
+# Set up file handler
+file_handler = RotatingFileHandler('training.log', maxBytes=10*1024*1024, backupCount=5)
+file_handler.setLevel(logging.INFO)
+
+# Set up console handler
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+
+# Create formatter and add it to the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+console_handler.setFormatter(formatter)
+
+# Get the logger and add the handlers
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
+
+# logger.info(f"CUDA available: {torch.cuda.is_available()}")
+# logger.info(f"Current device: {torch.cuda.current_device()}")
+# logger.info(f"Device name: {torch.cuda.get_device_name()}")
 
 os.environ["WANDB_API_KEY"] = "ceff7aa0c8155b19c88199c687e74f8e22b4024c"
 
@@ -16,6 +43,12 @@ from transformers import TrainingArguments, HfArgumentParser, Trainer
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
+
+def print_gpu_memory():
+    if torch.cuda.is_available():
+        logger.info(f"Allocated: {torch.cuda.memory_allocated(0) / 1024**3:.2f} GB")
+        logger.info(f"Cached: {torch.cuda.memory_reserved(0) / 1024**3:.2f} GB")
+
 
 class RobertaLongSelfAttention(LongformerSelfAttention):
     def forward(
@@ -77,6 +110,8 @@ def create_long_model(save_model_to, attention_window, max_pos):
     logger.info(f'saving model to {save_model_to}')
     model.save_pretrained(save_model_to)
     tokenizer.save_pretrained(save_model_to)
+    logger.info(model.config)
+    tokenizer.model_max_length = 4098
     return model, tokenizer
 
 
@@ -120,7 +155,7 @@ def pretrain_and_evaluate(args, model, tokenizer, eval_only, model_path):
         eval_dataset=val_dataset,
         callbacks=callbacks
     )
-
+    print_gpu_memory()
     eval_loss = trainer.evaluate()
     eval_loss = eval_loss['eval_loss']
     eval_bpc = eval_loss / math.log(2)
@@ -148,6 +183,7 @@ parser = HfArgumentParser((TrainingArguments, ModelArgs,))
 
 
 def main():
+    print_gpu_memory()
     training_args, model_args = parser.parse_args_into_dataclasses(look_for_args_file=False, args=[
         '--output_dir', 'tmp',
         '--warmup_steps', '500',
@@ -166,7 +202,7 @@ def main():
     ])
     training_args.val_datapath = './pubmed_val.txt'
     training_args.train_datapath = './pubmed_train.txt'
-
+    print_gpu_memory()
     # Initialize wandb
     wandb.init(project="roberta-long", config=vars(training_args))
 
@@ -176,8 +212,9 @@ def main():
 
     roberta_base = RobertaForMaskedLM.from_pretrained('roberta-base')
     roberta_base_tokenizer = RobertaTokenizerFast.from_pretrained('roberta-base')
-    logger.info('Evaluating roberta-base (seqlen: 512) for reference ...')
-    pretrain_and_evaluate(training_args, roberta_base, roberta_base_tokenizer, eval_only=True, model_path=None)
+    # print_gpu_memory()
+    # logger.info('Evaluating roberta-base (seqlen: 512) for reference ...')
+    # pretrain_and_evaluate(training_args, roberta_base, roberta_base_tokenizer, eval_only=True, model_path=None)
 
     # Create and train long-range model
     logger.info(f'Creating long model with attention window: {model_args.attention_window} and max pos: {model_args.max_pos}')
